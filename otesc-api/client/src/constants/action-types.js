@@ -1,0 +1,2 @@
+export const ADD_SEARCH_PARAM = 'ADD_SEARCH_PARAM';
+export const CLEAR_SEARCH = 'CLEAR_SEARCH';

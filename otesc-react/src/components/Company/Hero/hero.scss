@@ -1,0 +1,31 @@
+$font-stack-ssf: 'Source Sans Pro', san-serif;
+$primary-color: #3b4057;
+$secondary-color: #b42b4b;
+
+.minihero {
+	margin-top: 10vh;
+	height: 30vh;
+	width: 100vw;
+	background-image: url('./mini-hero.png');
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	span {
+		color: rgb(211, 211, 211);
+		font-family: $font-stack-ssf;
+		font-weight: 200;
+		font-size: 0.95em;
+	}
+
+	.title {
+		color: #fff;
+		font-family: $font-stack-ssf;
+		font-weight: 600;
+		font-size: 2em;
+	}
+}

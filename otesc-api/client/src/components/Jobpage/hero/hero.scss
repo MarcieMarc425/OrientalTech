@@ -1,0 +1,32 @@
+$font-stack-ssf: 'Source Sans Pro', san-serif;
+$primary-color: #3b4057;
+$secondary-color: #b42b4b;
+
+.job-hero {
+	margin-top: 10vh;
+	height: 30vh;
+	width: 100vw;
+	background-image: url('./job-hero.png');
+	background-size: cover;
+	background-position: 50% 40%;
+	background-repeat: no-repeat;
+	background-attachment: scroll;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+
+	span {
+		color: #fff;
+		font-family: $font-stack-ssf;
+		font-weight: 200;
+		font-size: 0.95em;
+	}
+
+	.title {
+		color: #fff;
+		font-family: $font-stack-ssf;
+		font-weight: 600;
+		font-size: 2em;
+		display: inline-flex;
+	}
+}

@@ -1,0 +1,85 @@
+$primary-color: #3b4057;
+$secondary-color: #b42b4b;
+$font-stack-ssf: 'Source Sans Pro', san-serif;
+
+.expertise {
+	height: 90vh;
+	width: 100%;
+	background-color: $secondary-color;
+
+	.container {
+		display: flex;
+		max-width: 100vw;
+		justify-content: space-evenly;
+		padding-left: 0;
+		padding-right: 0;
+
+		.industry {
+			height: 90vh;
+			width: 100%;
+			color: #fff;
+			font-family: $font-stack-ssf;
+
+			%overlay {
+				height: 100%;
+				width: 100%;
+				display: flex;
+				flex-direction: column;
+				align-items: center;
+				text-align: center;
+				justify-content: center;
+				flex-wrap: wrap;
+				background: linear-gradient(
+					to bottom right,
+					#2631615e,
+					#b42b4b5e
+				);
+
+				&:hover {
+					background: linear-gradient(
+						to bottom right,
+						#263161a2,
+						#b42b4ba2
+					);
+				}
+			}
+			.overlay {
+				@extend %overlay;
+				.title {
+					font-weight: 600;
+					font-size: 1.3em;
+					margin-bottom: 1em;
+				}
+				.list {
+					font-size: 0.95em;
+				}
+			}
+		}
+		%background-style {
+			background-size: cover;
+			background-position: center center;
+			background-repeat: no-repeat;
+			background-attachment: scroll;
+		}
+		#infoTech {
+			background-image: url(./infotech.png);
+			@extend %background-style;
+		}
+		#telecom {
+			background-image: url(./telecom.png);
+			@extend %background-style;
+		}
+		#electronics {
+			background-image: url(./electronics.png);
+			@extend %background-style;
+		}
+		#medical {
+			background-image: url('./medical.png');
+			@extend %background-style;
+		}
+		#testingEquip {
+			background-image: url('./testing.png');
+			@extend %background-style;
+		}
+	}
+}

@@ -1,0 +1,66 @@
+$primary-color: #3b4057;
+$font-stack-ssf: 'Source Sans Pro', san-serif;
+$secondary-color: #b42b4b;
+
+.signupbar {
+	height: 40vh;
+	background-color: $primary-color;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	color: #fff;
+
+	.header {
+		font-family: 'EB Garamond', serif;
+		font-weight: 600;
+		font-size: 2em;
+	}
+
+	.smallText {
+		font-family: $font-stack-ssf;
+		font-weight: 200;
+		font-size: 1.2em;
+	}
+
+	form {
+		display: inline-flex;
+		margin-top: 2em;
+		font-family: $font-stack-ssf;
+
+		.emailSignup {
+			height: 3em;
+			width: 25em;
+			border: none;
+			margin-right: 2px;
+			padding-left: 3%;
+			border-top-right-radius: 25px;
+			border-bottom-right-radius: 25px;
+			border-top-left-radius: 25px;
+			border-bottom-left-radius: 25px;
+		}
+		.passwordSignup {
+			height: 3em;
+			width: 15em;
+			border: none;
+			padding-left: 3%;
+			border-top-right-radius: 25px;
+			border-bottom-right-radius: 25px;
+		}
+		button {
+			margin-left: 1em;
+			height: 3em;
+			width: 9em;
+			border: none;
+			border-radius: 25px;
+			color: #fff;
+			font-weight: 600;
+			background-color: $secondary-color;
+
+			&:hover {
+				background-color: #992540;
+				cursor: pointer;
+			}
+		}
+	}
+}

@@ -1,0 +1,37 @@
+.footer {
+	height: 25vh;
+	width: 100%;
+	background-color: #fff;
+	.container {
+		max-width: 100vw;
+	}
+
+	.logo {
+		margin-left: 4.5%;
+		margin-top: 3em;
+		margin-bottom: 2em;
+	}
+	.nav-footer {
+		display: inline-flex;
+		margin-left: 4.5%;
+		color: #3b4057;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-weight: 600;
+		font-size: 1em;
+		div {
+			margin-right: 3em;
+			margin-bottom: 3em;
+			&:hover {
+				cursor: pointer;
+				border-bottom: 1.5px solid #3b4057;
+			}
+		}
+	}
+	.copyright {
+		margin-left: 4.5%;
+		margin-bottom: 3%;
+		color: #636363;
+		font-family: 'Source Sans Pro', sans-serif;
+		font-size: 0.95em;
+	}
+}
