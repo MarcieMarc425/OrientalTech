@@ -1,125 +1,140 @@
 $primary-color: #3b4057;
 $secondary-color: #b42b4b;
 $font-stack-ssf: 'Source Sans Pro', san-serif;
+$small: 360px;
 
 .navbar {
-	height: 10vh;
-	width: 100%;
-	background-color: $primary-color;
-	display: inline-flex;
-	flex-wrap: nowrap;
-	align-items: center;
-	justify-content: space-between;
-	color: #fff;
-	font-family: $font-stack-ssf;
-	position: fixed;
-	box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
-	.logo {
-		transform: scale(0.8);
-		margin-left: 5%;
-	}
+    height: 10vh;
+    width: 100%;
+    background-color: $primary-color;
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    justify-content: space-between;
+    color: #fff;
+    font-family: $font-stack-ssf;
+    position: fixed;
+    box-shadow: 0 3px 3px rgba(0, 0, 0, 0.12), 0 2px 3px rgba(0, 0, 0, 0.24);
 
-	.search {
-		form {
-			display: inline-flex;
-			font-family: $font-stack-ssf;
-			transform: scale(0.8);
+    .logo {
+        transform: scale(0.8);
+        margin-left: 5%;
 
-			.job {
-				height: 3em;
-				width: 18em;
-				border: none;
-				margin-right: 2px;
-				padding-left: 3%;
-				border-top-left-radius: 25px;
-				border-bottom-left-radius: 25px;
-			}
-			.location {
-				height: 3em;
-				width: 14em;
-				border: none;
-				padding-left: 3%;
-				border-top-right-radius: 25px;
-				border-bottom-right-radius: 25px;
-			}
-			button {
-				margin-left: 1em;
-				height: 3em;
-				width: 9em;
-				border: none;
-				border-radius: 25px;
-				color: #fff;
-				font-weight: 600;
-				background-color: $secondary-color;
+        @media screen and (max-width: $small) {
+            transform: scale(0.5);
+            margin-left: 2%;
+        }
+    }
 
-				&:hover {
-					background-color: #992540;
-					cursor: pointer;
-				}
-			}
-		}
-	}
+    .search {
+        form {
+            display: inline-flex;
+            font-family: $font-stack-ssf;
+            transform: scale(0.8);
 
-	.nav {
-		margin-right: 5%;
-		font-weight: 600;
-		display: inline-flex;
-		justify-content: center;
-		align-items: center;
-		flex-wrap: nowrap;
+            .job {
+                height: 3em;
+                width: 18em;
+                border: none;
+                margin-right: 2px;
+                padding-left: 3%;
+                border-top-left-radius: 25px;
+                border-bottom-left-radius: 25px;
+                @media screen and (max-width: $small) {
+                    height: 3em;
+                    width: 5em;
+                }
+            }
+            .location {
+                height: 3em;
+                width: 14em;
+                border: none;
+                padding-left: 3%;
+                border-top-right-radius: 25px;
+                border-bottom-right-radius: 25px;
+                @media screen and (max-width: $small) {
+                    height: 3em;
+                    width: 5em;
+                }
+            }
+            button {
+                margin-left: 1em;
+                height: 3em;
+                width: 9em;
+                border: none;
+                border-radius: 25px;
+                color: #fff;
+                font-weight: 600;
+                background-color: $secondary-color;
 
-		.menu {
-			display: inline-flex;
-		}
+                &:hover {
+                    background-color: #992540;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 
-		%link-style {
-			display: inline-flex;
-			align-items: center;
-			justify-content: center;
-			height: 100%;
-			width: 90px;
-		}
+    .nav {
+        margin-right: 5%;
+        font-weight: 600;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: nowrap;
 
-		%link-hover {
-			color: #b42b4b;
-			transition: all 300ms linear;
-			cursor: pointer;
-		}
+        .menu {
+            display: inline-flex;
+        }
 
-		.login {
-			@extend %link-style;
-			&:hover {
-				@extend %link-hover;
-			}
-		}
+        %link-style {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            height: 100%;
+            width: 90px;
+        }
 
-		.signup {
-			@extend %link-style;
-			margin-left: 3em;
-			&:hover {
-				@extend %link-hover;
-			}
-		}
+        %link-hover {
+            color: #b42b4b;
+            transition: all 300ms linear;
+            cursor: pointer;
+        }
 
-		.menu {
-			@extend %link-style;
-			margin-left: 3em;
-			z-index: 1001;
-			&:hover {
-				@extend %link-hover;
-			}
-			div {
-				margin-right: 0.3em;
-			}
-		}
+        .login {
+            @extend %link-style;
+            &:hover {
+                @extend %link-hover;
+            }
+        }
 
-		.menuItem {
-			margin-bottom: 20px;
-			&:hover {
-				transition: all 300ms linear;
-				cursor: pointer;
-				margin-left: 15px;
-			}
-		}
-	}
+        .signup {
+            @extend %link-style;
+            margin-left: 3em;
+            &:hover {
+                @extend %link-hover;
+            }
+        }
+
+        .menu {
+            @extend %link-style;
+            margin-left: 3em;
+            z-index: 1001;
+            &:hover {
+                @extend %link-hover;
+            }
+            div {
+                margin-right: 0.3em;
+            }
+        }
+
+        .menuItem {
+            margin-bottom: 20px;
+            &:hover {
+                transition: all 300ms linear;
+                cursor: pointer;
+                margin-left: 15px;
+            }
+        }
+    }
 }

@@ -1,98 +1,124 @@
 $primary-color: #3b4057;
+$small: 768px;
 
 .Info {
-	height: auto;
+    height: auto;
 
-	.container {
-		max-width: 100vw;
-		display: grid;
-		grid-template-columns: repeat(12, 1fr);
-		grid-template-rows: auto auto;
+    .container {
+        max-width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: auto auto;
 
-		.header {
-			display: inline-flex;
-			width: 100%;
-			grid-column: 1 / -1;
-			justify-content: center;
-			margin-bottom: 2em;
-			font-family: 'Source Sans Pro', sans-serif;
-			font-weight: 600;
-			font-size: 1.2em;
+        .header {
+            display: inline-flex;
+            width: 100%;
+            grid-column: 1 / -1;
+            justify-content: center;
+            margin-bottom: 2em;
+            font-family: 'Source Sans Pro', sans-serif;
+            font-weight: 600;
+            font-size: 1.2em;
 
-			.candidateTab {
-				margin-right: 10em;
-				height: 2.5em;
-				width: 7em;
-				text-align: center;
-				margin-top: 3em;
+            @media screen and (max-width: $small) {
+                font-size: 1em;
+            }
 
-				&:hover {
-					color: $primary-color !important;
-					cursor: pointer;
-				}
-			}
+            .candidateTab {
+                margin-right: 10em;
+                height: 2.5em;
+                width: 7em;
+                text-align: center;
+                margin-top: 3em;
 
-			.employerTab {
-				height: 2.5em;
-				width: 7em;
-				text-align: center;
-				margin-top: 3em;
+                @media screen and (max-width: $small) {
+                    margin-right: 1em;
+                }
 
-				&:hover {
-					color: $primary-color !important;
-					cursor: pointer;
-				}
-			}
-		}
+                &:hover {
+                    color: $primary-color !important;
+                    cursor: pointer;
+                }
+            }
 
-		.content {
-			grid-column: 1/-1;
-			width: 100%;
-			display: flex;
-			width: 100%;
-			flex-direction: column;
-			justify-content: center;
-			margin-bottom: 4em;
+            .employerTab {
+                height: 2.5em;
+                width: 7em;
+                text-align: center;
+                margin-top: 3em;
 
-			.text {
-				margin-left: 17%;
-				margin-right: 17%;
-				font-family: 'Source Sans Pro', sans-serif;
-				font-size: 1em;
-				color: #3b4057;
+                &:hover {
+                    color: $primary-color !important;
+                    cursor: pointer;
+                }
+            }
+        }
 
-				div {
-					margin-bottom: 1.2em;
-				}
-			}
+        .content {
+            grid-column: 1/-1;
+            width: 100%;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: center;
+            margin-bottom: 4em;
+            @media screen and (max-width: $small) {
+                margin-bottom: 1em;
+            }
 
-			.process {
-				margin-left: 17%;
-				margin-top: 1em;
-				font-family: 'Source Sans Pro', sans-serif;
-				font-weight: 600;
-				font-size: 1.6em;
-				color: #3b4057;
-				margin-bottom: 0.6em;
-			}
+            .text {
+                margin-left: 17%;
+                margin-right: 17%;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 1em;
+                color: #3b4057;
 
-			.processes {
-				margin-left: 17%;
-				margin-right: 17%;
-				font-family: 'Source Sans Pro', sans-serif;
-				font-size: 1em;
-				color: #3b4057;
+                @media screen and (max-width: $small) {
+                    font-size: 0.9em;
+                    margin-left: 10%;
+                    margin-right: 10%;
+                }
 
-				.processTitle {
-					margin-bottom: 0.5em;
-					font-weight: 600;
-					font-size: 1.15em;
-				}
+                div {
+                    margin-bottom: 1.2em;
+                }
+            }
 
-				.item {
-					margin-bottom: 2em;
-				}
-			}
-		}
-	}
+            .process {
+                margin-left: 17%;
+                margin-top: 1em;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-weight: 600;
+                font-size: 1.6em;
+                color: #3b4057;
+                margin-bottom: 0.6em;
+                @media screen and (max-width: $small) {
+                    margin-left: 10%;
+                }
+            }
+
+            .processes {
+                margin-left: 17%;
+                margin-right: 17%;
+                font-family: 'Source Sans Pro', sans-serif;
+                font-size: 1em;
+                color: #3b4057;
+
+                @media screen and (max-width: $small) {
+                    margin-left: 10%;
+                    margin-right: 10%;
+                }
+
+                .processTitle {
+                    margin-bottom: 0.5em;
+                    font-weight: 600;
+                    font-size: 1.15em;
+                }
+
+                .item {
+                    margin-bottom: 2em;
+                }
+            }
+        }
+    }
 }

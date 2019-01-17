@@ -2,178 +2,236 @@ $font-stack-ssf: 'Source Sans Pro', san-serif;
 $font-stack-sf: 'EB Garamond', serif;
 $primary-color: #3b4057;
 $secondary-color: #b42b4b;
+$small: 768px;
+$medium: 1366px;
+$large: 1920px;
 
 .hero {
-	height: 100vh;
-	background-image: url('./hero_img_med.png');
-	background-size: cover;
-	background-position: center center;
-	background-repeat: no-repeat;
-	background-attachment: scroll;
+    height: 100vh;
+    background-image: url('./hero_img_med.png');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
 
-	.container {
-		height: 100vh;
-		max-width: 100vw;
-		display: grid;
-		grid-template-columns: repeat(12, 1fr);
-		grid-template-rows: 1fr 5fr 0.5fr;
+    @media screen and (max-width: $small) {
+        background-image: url('./hero_img_med.png');
+        background-size: cover;
+        background-position: center center;
+        background-repeat: no-repeat;
+        background-attachment: scroll;
+    }
 
-		.header {
-			display: inline-flex;
-			justify-content: space-between;
-			grid-column: 1/-1;
-			margin-left: 5%;
-			margin-right: 5%;
-			margin-top: 3%;
+    .container {
+        height: 100vh;
+        max-width: 100vw;
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-template-rows: 1fr 5fr 0.5fr;
 
-			.logo {
-				align-items: center;
-				justify-content: center;
-			}
+        .header {
+            display: inline-flex;
+            justify-content: space-between;
+            grid-column: 1/-1;
+            margin-left: 5%;
+            margin-right: 5%;
+            margin-top: 3%;
 
-			.nav {
-				display: inline-flex;
-				color: #fff;
-				justify-content: center;
-				align-items: center;
-				font-family: $font-stack-ssf;
-				font-weight: 600;
+            @media screen and (max-width: $small) {
+                margin-left: 2%;
+            }
 
-				div::selection {
-					background: transparent;
-				}
+            .logo {
+                align-items: center;
+                justify-content: center;
 
-				%link-style {
-					display: inline-flex;
-					align-items: center;
-					justify-content: center;
-					height: 90px;
-					width: 90px;
-					border-radius: 50%;
-				}
+                @media screen and (max-width: $small) {
+                    transform: scale(0.7);
+                }
+            }
 
-				%link-hover {
-					background-color: #b42b4b;
-					transition: all 300ms linear;
-					cursor: pointer;
-				}
+            .nav {
+                display: inline-flex;
+                color: #fff;
+                justify-content: center;
+                align-items: center;
+                font-family: $font-stack-ssf;
+                font-weight: 600;
 
-				.login {
-					@extend %link-style;
-					&:hover {
-						@extend %link-hover;
-					}
-				}
+                div::selection {
+                    background: transparent;
+                }
 
-				.signup {
-					@extend %link-style;
-					margin-left: 3em;
-					&:hover {
-						@extend %link-hover;
-					}
-				}
+                %link-style {
+                    display: inline-flex;
+                    align-items: center;
+                    justify-content: center;
+                    height: 90px;
+                    width: 90px;
+                    border-radius: 50%;
+                }
 
-				.menu {
-					@extend %link-style;
-					margin-left: 3em;
-					z-index: 999;
-					&:hover {
-						@extend %link-hover;
-					}
-					div {
-						margin-right: 0.3em;
-					}
-				}
+                %link-hover {
+                    background-color: #b42b4b;
+                    transition: all 300ms linear;
+                    cursor: pointer;
+                }
 
-				.menuItem {
-					margin-bottom: 20px;
-					&:hover {
-						transition: all 300ms linear;
-						cursor: pointer;
-						margin-left: 15px;
-					}
-				}
-			}
-		}
-		.content {
-			color: #fff;
-			grid-column: 4 / 10;
-			display: flex;
-			flex-direction: column;
-			justify-content: center;
-			align-items: center;
-			margin-top: -10%;
+                .login {
+                    @extend %link-style;
+                    &:hover {
+                        @extend %link-hover;
+                    }
+                }
 
-			.header {
-				font-family: $font-stack-sf;
-				font-weight: 600;
-				font-size: 2.3em;
-				margin-bottom: 0.2em;
-			}
+                .signup {
+                    @extend %link-style;
+                    margin-left: 3em;
+                    &:hover {
+                        @extend %link-hover;
+                    }
+                }
 
-			.text {
-				font-family: $font-stack-ssf;
-				font-weight: 200;
-				font-size: 1.35em;
-				text-align: center;
-				color: #fff;
-				margin-left: 2.7em;
-				margin-right: 2.7em;
+                .menu {
+                    @extend %link-style;
+                    margin-left: 3em;
+                    z-index: 999;
+                    &:hover {
+                        @extend %link-hover;
+                    }
+                    div {
+                        margin-right: 0.3em;
+                    }
+                }
 
-				span {
-					color: #fff06f;
-				}
-			}
+                .menuItem {
+                    margin-bottom: 20px;
+                    &:hover {
+                        transition: all 300ms linear;
+                        cursor: pointer;
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+        .content {
+            color: #fff;
+            grid-column: 4 / 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            margin-top: -10%;
 
-			.search {
-				form {
-					display: inline-flex;
-					margin-top: 3em;
-					font-family: $font-stack-ssf;
+            @media screen and (max-width: $small) {
+                grid-column: 2 / 12;
+            }
 
-					.job {
-						height: 3em;
-						width: 15em;
-						border: none;
-						margin-right: 2px;
-						padding-left: 3%;
-						border-top-left-radius: 25px;
-						border-bottom-left-radius: 25px;
-					}
-					.location {
-						height: 3em;
-						width: 11em;
-						border: none;
-						padding-left: 3%;
-						border-top-right-radius: 25px;
-						border-bottom-right-radius: 25px;
-					}
-					button {
-						margin-left: 1em;
-						height: 3em;
-						width: 9em;
-						border: none;
-						border-radius: 25px;
-						color: #fff;
-						font-weight: 600;
-						background-color: $secondary-color;
+            .header {
+                font-family: $font-stack-sf;
+                font-weight: 600;
+                font-size: 2.3em;
+                margin-bottom: 0.2em;
+                @media screen and (max-width: $small) {
+                    font-size: 1em;
+                    justify-content: center;
+                    text-align: center;
+                }
+            }
 
-						&:hover {
-							background-color: #992540;
-							cursor: pointer;
-						}
-					}
-				}
-			}
+            .text {
+                font-family: $font-stack-ssf;
+                font-weight: 200;
+                font-size: 1.35em;
+                text-align: center;
+                color: #fff;
+                margin-left: 2.7em;
+                margin-right: 2.7em;
 
-			.employerLink {
-				margin-top: 2.5em;
-				text-decoration: underline #fff;
+                @media screen and (max-width: $small) {
+                    font-size: 0.8em;
+                }
 
-				&:hover {
-					cursor: pointer;
-				}
-			}
-		}
-	}
+                span {
+                    color: #fff06f;
+                }
+            }
+
+            .search {
+                form {
+                    display: inline-flex;
+                    margin-top: 3em;
+                    font-family: $font-stack-ssf;
+
+                    @media screen and (max-width: $small) {
+                        display: flex;
+                        flex-direction: column;
+                        margin-top: 2em;
+                        align-items: center;
+                    }
+
+                    .job {
+                        height: 3em;
+                        width: 15em;
+                        border: none;
+                        margin-right: 2px;
+                        padding-left: 3%;
+                        border-top-left-radius: 25px;
+                        border-bottom-left-radius: 25px;
+
+                        @media screen and (max-width: $small) {
+                            height: 2.2em;
+                            width: 8.5em;
+                        }
+                    }
+                    .location {
+                        height: 3em;
+                        width: 11em;
+                        border: none;
+                        padding-left: 3%;
+                        border-top-right-radius: 25px;
+                        border-bottom-right-radius: 25px;
+                        @media screen and (max-width: $small) {
+                            height: 2.2em;
+                            width: 8.5em;
+                        }
+                    }
+                    button {
+                        margin-left: 1em;
+                        height: 3em;
+                        width: 9em;
+                        border: none;
+                        border-radius: 25px;
+                        color: #fff;
+                        font-weight: 600;
+                        background-color: $secondary-color;
+
+                        @media screen and (max-width: $small) {
+                            height: 2.2em;
+                            width: 8em;
+                            margin-top: 1em;
+                        }
+
+                        &:hover {
+                            background-color: #992540;
+                            cursor: pointer;
+                        }
+                    }
+                }
+            }
+
+            .employerLink {
+                margin-top: 2.5em;
+                text-decoration: underline #fff;
+
+                @media screen and (max-width: $small) {
+                    font-size: 0.7em;
+                }
+
+                &:hover {
+                    cursor: pointer;
+                }
+            }
+        }
+    }
 }
