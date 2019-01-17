@@ -4,54 +4,57 @@ $primary-color: #3b4057;
 $secondary-color: #b42b4b;
 
 .jobCard {
-	width: 100%;
-	margin-left: 3%;
-	font-family: $font-stack-ssf;
-	color: $primary-color;
-	display: flex;
-	flex-direction: column;
-	margin-bottom: 3em;
+    width: 100%;
+    margin-left: 3%;
+    font-family: $font-stack-ssf;
+    color: $primary-color;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 3em;
 
-	.jobTitle {
-		font-weight: 600;
-		font-size: 1.5em;
-	}
+    .jobTitle {
+        font-weight: 600;
+        font-size: 1.5em;
+        &:hover {
+            cursor: pointer;
+        }
+    }
 
-	.jobLocation {
-		font-size: 1.1em;
-		margin-top: 0.5em;
-	}
+    .jobLocation {
+        font-size: 1.1em;
+        margin-top: 0.5em;
+    }
 
-	.jobMiscDetail {
-		display: flex;
-		margin-top: 1em;
+    .jobMiscDetail {
+        display: flex;
+        margin-top: 1em;
 
-		.jobCareerLvl {
-			margin-right: 3em;
-		}
+        .jobCareerLvl {
+            margin-right: 3em;
+        }
 
-		.jobTypeSalary {
-			margin-right: 3em;
-		}
+        .jobTypeSalary {
+            margin-right: 3em;
+        }
 
-		.date_posted {
-			margin-right: 3em;
-		}
-	}
+        .date_posted {
+            margin-right: 3em;
+        }
+    }
 
-	.jobTags {
-		display: flex;
-		margin-top: 1em;
+    .jobTags {
+        display: flex;
+        margin-top: 1em;
 
-		.tag {
-			background-color: #a2a9c5;
-			color: #fff;
-			padding-right: 1em;
-			padding-left: 1em;
-			padding-top: 0.1em;
-			padding-bottom: 0.1em;
-			margin-right: 1em;
-			border-radius: 25px;
-		}
-	}
+        .tag {
+            background-color: #a2a9c5;
+            color: #fff;
+            padding-right: 1em;
+            padding-left: 1em;
+            padding-top: 0.1em;
+            padding-bottom: 0.1em;
+            margin-right: 1em;
+            border-radius: 25px;
+        }
+    }
 }

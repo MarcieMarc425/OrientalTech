@@ -44,6 +44,13 @@ app.post('/api/jobsearch', (req, res) => {
     }
 });
 
+app.post('/api/jobsearchID', (req, res) => {
+    var ObjectId = require('mongoose').Types.ObjectId;
+    Jobs.findOne({ _id: new ObjectId(req.body.query) }, (err, doc) => {
+        res.json(doc);
+    });
+});
+
 app.post('/api/subscribe', (req, res) => {
     var subscribe = new Subscription({ email: req.body.email });
     subscribe.save(err => {
