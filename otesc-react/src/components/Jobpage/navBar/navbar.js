@@ -73,7 +73,12 @@ class Navbar extends Component {
 		return (
 			<div className='navbar'>
 				<Link to='/'>
-					<img src={logo_white} className='logo' alt='logo' />
+					{/* <img src={logo_white} className='logo' alt='logo' /> */}
+					<object
+						data={logo_white}
+						className='logo'
+						aria-label='logo'
+					/>
 				</Link>
 				<div className='search'>
 					<form>

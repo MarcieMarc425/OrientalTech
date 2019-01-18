@@ -29,6 +29,9 @@
 <?xpacket end="w"?></metadata>
 <defs>
     <style>
+      @import url('https://fonts.googleapis.com/css?family=Poppins:700');
+			@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro:300');
+
       .cls-1 {
         font-size: 48px;
         font-family: Poppins;

@@ -162,7 +162,12 @@ class Hero extends Component {
             <div className='hero'>
                 <div className='container'>
                     <div className='header'>
-                        <img src={logo_white} className='logo' alt='logo' />
+                        {/* <img src={logo_white} className='logo' alt='logo' /> */}
+                        <object
+                            data={logo_white}
+                            className='logo'
+                            aria-label='logo'
+                        />
                         <div className='nav'>
                             {/* <div
 								className='login'
