@@ -26,6 +26,7 @@ export default class jobDetail extends Component {
     }
 
     componentDidMount = () => {
+        window.scrollTo(0, 0);
         api.searchByID(this.props.match.params.id).then(res => {
             this.setState({
                 title: res.title,

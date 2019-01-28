@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Navbar from '../Jobpage/navBar/navbar';
+import Hero from '../Employer/hero/hero';
 import Footer from '../Homepage/footer/footer';
 
 class employer extends Component {
@@ -10,7 +10,7 @@ class employer extends Component {
     render() {
         return (
             <div className='employer'>
-                <Navbar />
+                <Hero />
                 <Footer />
             </div>
         );
