@@ -16,62 +16,77 @@ app.use(express.static(path.join(__dirname, '/../client/build')));
 dotenv.config();
 
 mongoose.connect(
-    // for testing
-    process.env.MONGODB_URL,
+	// for testing
+	process.env.MONGODB_URL,
 
-    // // for build
-    // process.env.MONGODB_URI,
-    { useNewUrlParser: true }
+	// // for build
+	// process.env.MONGODB_URI,
+	{ useNewUrlParser: true }
 );
 var db = mongoose.connection;
 db.once('open', () => {
-    console.log('Connected to MongoDB');
+	console.log('Connected to MongoDB');
 });
 
 app.get('*', (req, res) => {
-    // // for build
-    // res.sendFile(path.join(__dirname, '/../client/build/index.html'));
+	// // for build
+	// res.sendFile(path.join(__dirname, '/../client/build/index.html'));
 
-    //for testing
-    res.sendFile(path.join(__dirname, 'index.html'));
+	//for testing
+	res.sendFile(path.join(__dirname, 'index.html'));
 });
 
 app.post('/api/jobsearch', (req, res) => {
-    if (req.body.query.job === '' && req.body.query.location === '') {
-        Jobs.find({}, (err, docs) => {
-            res.json(docs);
-        });
-    }
+	if (req.body.query.job === '' && req.body.query.location === '') {
+		Jobs.find({}, (err, docs) => {
+			res.json(docs);
+		});
+	}
 });
 
 app.post('/api/jobsearchID', (req, res) => {
-    var ObjectId = require('mongoose').Types.ObjectId;
-    Jobs.findOne({ _id: new ObjectId(req.body.query) }, (err, doc) => {
-        res.json(doc);
-    });
+	var ObjectId = require('mongoose').Types.ObjectId;
+	Jobs.findOne({ _id: new ObjectId(req.body.query) }, (err, doc) => {
+		res.json(doc);
+	});
 });
 
 app.post('/api/subscribe', (req, res) => {
-    var subscribe = new Subscription({ email: req.body.email });
-    subscribe.save(err => {
-        if (!err) res.json('Success');
-        else res.json(err);
-    });
+	var subscribe = new Subscription({ email: req.body.email });
+	subscribe.save(err => {
+		if (!err) res.json('Success');
+		else res.json(err);
+	});
 });
 
 app.post('/api/msg', (req, res) => {
-    var msg = new Message({
-        name: req.body.msg.name,
-        email: req.body.msg.email,
-        phone: req.body.msg.phone,
-        text: req.body.msg.text
-    });
-    msg.save(err => {
-        if (!err) res.json('Success');
-        else res.json(err);
-    });
+	var msg = new Message({
+		name: req.body.msg.name,
+		email: req.body.msg.email,
+		phone: req.body.msg.phone,
+		text: req.body.msg.text
+	});
+	msg.save(err => {
+		if (!err) res.json('Success');
+		else res.json(err);
+	});
+});
+
+app.post('/api/employ', (req, res) => {
+	var employ = new Employer({
+		name: req.body.employ.name,
+		email: req.body.employ.email,
+		company: req.body.employ.company,
+		location: req.body.employ.location,
+		phone: req.body.employ.phone,
+		industry: req.body.employ.industry
+	});
+	employ.save(err => {
+		if (!err) res.json('Success');
+		else res.json(err);
+	});
 });
 
 app.listen(process.env.PORT || 5000, () =>
-    console.log('Running on localhost:5000')
+	console.log('Running on localhost:5000')
 );
