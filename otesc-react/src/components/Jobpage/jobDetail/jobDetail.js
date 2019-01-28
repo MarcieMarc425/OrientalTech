@@ -3,6 +3,27 @@ import Navbar from '../../Jobpage/navBar/navbar';
 import Footer from '../../Homepage/footer/footer';
 import api from '../../../api/index';
 import './jobDetail.scss';
+import {
+    Modal,
+    ModalHeader,
+    ModalBody,
+    ModalFooter,
+    Form,
+    FormGroup,
+    FormText,
+    Input,
+    Button,
+    Label,
+    Alert
+} from 'reactstrap';
+import { uploadFile } from 'react-s3';
+
+const config = {
+    bucketName: 'otesc-s3bucket',
+    region: 'us-east-2',
+    accessKeyId: 'AKIAJ364LSOTF7PG6RSA',
+    secretAccessKey: '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'
+};
 
 export default class jobDetail extends Component {
     constructor(props) {
@@ -21,8 +42,22 @@ export default class jobDetail extends Component {
             tags: [],
             desc: [],
             responsibility: [],
-            requirements: []
+            requirements: [],
+            applyModal: false,
+            applyForm: {
+                applyName: '',
+                applyEmail: '',
+                applyPhone: '',
+                applyResume: null,
+                applyCover: null
+            },
+            applySubmitted: false,
+            error: ''
         };
+        this.toggleApplyModal = this.toggleApplyModal.bind(this);
+        this.onApplyFormChange = this.onApplyFormChange.bind(this);
+        this.onFileChange = this.onFileChange.bind(this);
+        this.handleApplySubmit = this.handleApplySubmit.bind(this);
     }
 
     componentDidMount = () => {
@@ -44,6 +79,74 @@ export default class jobDetail extends Component {
                 requirements: res.requirements
             });
         });
+    };
+
+    toggleApplyModal() {
+        this.setState({
+            applyModal: !this.state.applyModal
+        });
+    }
+
+    onApplyFormChange = e => {
+        this.setState({
+            applyForm: {
+                ...this.state.applyForm,
+                [e.target.name]: e.target.value
+            }
+        });
+    };
+
+    onFileChange = e => {
+        if (e.target.files[0] === undefined) {
+            this.setState({
+                applyForm: {
+                    ...this.state.applyForm,
+                    [e.target.name]: null
+                }
+            });
+        } else {
+            this.setState({
+                applyForm: {
+                    ...this.state.applyForm,
+                    [e.target.name]: e.target.files[0]
+                }
+            });
+        }
+    };
+
+    handleApplySubmit = e => {
+        e.preventDefault();
+        if (
+            this.state.applyForm.applyName === '' ||
+            this.state.applyForm.applyEmail === '' ||
+            this.state.applyForm.applyPhone === '' ||
+            this.state.applyForm.applyResume === null ||
+            this.state.applyForm.applyCover === null
+        ) {
+            this.setState({
+                applySubmitted: true,
+                error: 'Form entry(s) cannot be empty'
+            });
+        } else {
+            var extension = this.state.applyForm.applyResume.name
+                .split('.')
+                .pop();
+            console.log(extension);
+            if (
+                extension === 'pdf' ||
+                extension === 'doc' ||
+                extension === 'docx'
+            ) {
+                uploadFile(this.state.applyForm.applyResume, config).then(
+                    data => console.log(data)
+                );
+            } else {
+                this.setState({
+                    applySubmitted: true,
+                    error: 'File type must be .pdf, .doc or .docx'
+                });
+            }
+        }
     };
 
     render() {
@@ -81,8 +184,92 @@ export default class jobDetail extends Component {
                             </div>
                         </div>
 
-                        <button className='jobDetailApply'>Apply</button>
+                        <button
+                            className='jobDetailApply'
+                            onClick={this.toggleApplyModal}
+                        >
+                            Apply
+                        </button>
                     </div>
+                    <Modal
+                        isOpen={this.state.applyModal}
+                        toggle={this.toggleApplyModal}
+                        className='loginModal'
+                    >
+                        <Form onSubmit={this.handleApplySubmit}>
+                            <ModalHeader toggle={this.toggleApplyModal}>
+                                Apply to {this.state.title}
+                            </ModalHeader>
+                            <ModalBody>
+                                <FormGroup>
+                                    <Label for='applyName'>Name</Label>
+
+                                    <Input
+                                        type='text'
+                                        name='applyName'
+                                        id='applyName'
+                                        value={this.state.applyForm.applyName}
+                                        onChange={this.onApplyFormChange}
+                                        placeholder='Enter your full name'
+                                    />
+                                </FormGroup>
+
+                                <FormGroup>
+                                    <Label for='applyEmail'>Email</Label>
+
+                                    <Input
+                                        type='text'
+                                        name='applyEmail'
+                                        id='applyEmail'
+                                        value={this.state.applyForm.applyEmail}
+                                        onChange={this.onApplyFormChange}
+                                        placeholder='Enter your email'
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='applyPhone'>Phone</Label>
+
+                                    <Input
+                                        type='text'
+                                        name='applyPhone'
+                                        id='applyPhone'
+                                        value={this.state.applyForm.applyPhone}
+                                        onChange={this.onApplyFormChange}
+                                        placeholder='Enter your phone'
+                                    />
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='applyResume'>Resume</Label>
+                                    <Input
+                                        type='file'
+                                        name='applyResume'
+                                        id='applyResume'
+                                        onChange={this.onFileChange}
+                                    />
+                                    <FormText color='muted'>
+                                        Accepts only PDF or Word files
+                                    </FormText>
+                                </FormGroup>
+                                <FormGroup>
+                                    <Label for='applyCover'>Cover Letter</Label>
+                                    <Input
+                                        type='file'
+                                        name='applyCover'
+                                        id='applyCover'
+                                        onChange={this.onFileChange}
+                                    />
+                                    <FormText color='muted'>
+                                        Accepts only PDF or Word files
+                                    </FormText>
+                                </FormGroup>
+                            </ModalBody>
+                            <ModalFooter>
+                                <Button type='submit' color='primary'>
+                                    Apply
+                                </Button>
+                            </ModalFooter>
+                        </Form>
+                    </Modal>
 
                     <div className='jobDetailContent'>
                         <div className='detailFlexRow'>
