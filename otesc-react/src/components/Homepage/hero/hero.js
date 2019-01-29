@@ -388,9 +388,16 @@ class Hero extends Component {
                                 <button type='submit'>APPLY NOW</button>
                             </form>
                         </div>
-                        <div className='employerLink'>
-                            Are you an employer looking to hire instead?
-                        </div>
+                        <Link
+                            to={'/employer'}
+                            style={{
+                                color: '#fff'
+                            }}
+                        >
+                            <div className='employerLink'>
+                                Are you an employer looking to hire instead?
+                            </div>
+                        </Link>
                     </div>
                 </div>
             </div>

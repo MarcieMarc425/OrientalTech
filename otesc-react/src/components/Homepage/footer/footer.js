@@ -30,7 +30,7 @@ class Footer extends Component {
                                 <div>Jobs</div>
                             </Link>
                             <Link
-                                to='/jobs'
+                                to='/employer'
                                 style={{
                                     textDecoration: 'none',
                                     color: '#3b4057'
