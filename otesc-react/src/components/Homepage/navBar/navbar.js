@@ -182,7 +182,7 @@ class Navbar extends Component {
 					</div>
 					<Motion
 						style={{
-							x: spring(menuOpen ? 0 : 0),
+							x: spring(menuOpen ? 0 : 400),
 							opacity: spring(menuOpen ? 1 : 0)
 						}}
 					>
