@@ -16,18 +16,26 @@ class SignupBar extends Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        api.subscribe(this.state.email).then(res => {
-            if (res === 'Success') {
-                this.setState({
-                    submitted: true
-                });
-            } else {
-                this.setState({
-                    submitted: true,
-                    error: res
-                });
-            }
-        });
+        if (this.state.email === '') {
+            this.setState({
+                submitted: true,
+                error: 'Email cannot be empty'
+            });
+        } else {
+            api.subscribe(this.state.email).then(res => {
+                if (res === 'Success') {
+                    this.setState({
+                        submitted: true,
+                        error: ''
+                    });
+                } else {
+                    this.setState({
+                        submitted: true,
+                        error: res
+                    });
+                }
+            });
+        }
     };
 
     onEmailChange = e => {
