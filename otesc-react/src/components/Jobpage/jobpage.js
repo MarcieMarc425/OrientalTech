@@ -4,7 +4,9 @@ import JobQuery from '../Jobpage/jobQuery/jobQuery';
 import Footer from '../Homepage/footer/footer';
 import Hero from '../Jobpage/hero/hero';
 import { connect } from 'react-redux';
-import { clearSearch } from '../../actions/index';
+import { bindActionCreators } from 'redux';
+import { clearSearch, addSearch } from '../../actions/index';
+import PropTypes from 'prop-types';
 import api from '../../api/index';
 
 class jobpage extends Component {
@@ -35,10 +37,13 @@ class jobpage extends Component {
         this.props.clearSearch().then(console.log('Search cleared'));
     };
 
+    jobSearch = data =>
+        this.props.addSearch(data).then(() => this.props.history.push('/jobs'));
+
     render() {
         return (
             <div>
-                <Navbar />
+                <Navbar jobSearch={this.jobSearch} />
                 <Hero
                     job={this.state.query.job}
                     location={this.state.query.location}
@@ -59,7 +64,18 @@ function mapStateToProps(state) {
     };
 }
 
+jobpage.propTypes = {
+    history: PropTypes.shape({
+        push: PropTypes.func.isRequired
+    }),
+    addSearch: PropTypes.func.isRequired
+};
+
+const mapDispatchToProps = dispatch => {
+    return bindActionCreators({ addSearch, clearSearch }, dispatch);
+};
+
 export default connect(
     mapStateToProps,
-    { clearSearch }
+    mapDispatchToProps
 )(jobpage);
