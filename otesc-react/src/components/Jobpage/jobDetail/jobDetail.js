@@ -130,6 +130,24 @@ export default class jobDetail extends Component {
                 extension === 'docx'
             ) {
                 //upload to S3
+                //if success, return access html
+                //post to backend
+                var application = {
+                    jobId: this.state.id,
+                    name: this.state.applyForm.applyName,
+                    email: this.state.applyForm.applyEmail,
+                    phone: this.state.applyForm.applyPhone,
+                    resume: 'http://example.site.com',
+                    cover: 'http://example.site.com'
+                };
+                api.apply(application).then(res => {
+                    if (res === 'Success') {
+                        this.setState({
+                            applySubmitted: true,
+                            error: ''
+                        });
+                    }
+                });
             } else {
                 this.setState({
                     applySubmitted: true,
@@ -151,6 +169,26 @@ export default class jobDetail extends Component {
                 </div>
             );
         }
+
+        let popUp;
+        if (this.state.applySubmitted === true) {
+            if (this.state.error === '') {
+                popUp = (
+                    <div className='alert'>
+                        <Alert color='success'>
+                            Application successfully submitted.
+                        </Alert>
+                    </div>
+                );
+            } else {
+                popUp = (
+                    <div className='alert'>
+                        <Alert color='danger'>Error: {this.state.error}</Alert>
+                    </div>
+                );
+            }
+        }
+
         return (
             <div className='jobDetail'>
                 <Navbar />
@@ -252,6 +290,7 @@ export default class jobDetail extends Component {
                                         Accepts only PDF or Word files
                                     </FormText>
                                 </FormGroup>
+                                {popUp}
                             </ModalBody>
                             <ModalFooter>
                                 <Button type='submit' color='primary'>
