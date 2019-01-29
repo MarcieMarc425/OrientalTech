@@ -200,7 +200,8 @@ class Navbar extends Component {
 									transform: `translate3d(${
 										currentStyles.x
 									}%, 0, 0)`,
-									opacity: currentStyles.opacity
+									opacity: currentStyles.opacity,
+									zIndex: currentStyles.zIndex
 								}}
 							>
 								{/* <Link
@@ -221,6 +222,15 @@ class Navbar extends Component {
 								>
 									<div className='menuItem'>Signup</div>
 								</Link> */}
+								<Link
+									to='/'
+									style={{
+										textDecoration: 'none',
+										color: '#fff'
+									}}
+								>
+									<div className='menuItem'>Home</div>
+								</Link>
 								<Link
 									to='/jobs'
 									style={{

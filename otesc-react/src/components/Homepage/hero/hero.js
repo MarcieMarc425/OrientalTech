@@ -280,8 +280,9 @@ class Hero extends Component {
                             </div>
                             <Motion
                                 style={{
-                                    x: spring(menuOpen ? 0 : 400),
-                                    opacity: spring(menuOpen ? 1 : 0)
+                                    x: spring(menuOpen ? 0 : 0),
+                                    opacity: spring(menuOpen ? 1 : 0),
+                                    zIndex: spring(menuOpen ? 100 : -1)
                                 }}
                             >
                                 {currentStyles => (
@@ -291,7 +292,8 @@ class Hero extends Component {
                                             transform: `translate3d(${
                                                 currentStyles.x
                                             }%, 0, 0)`,
-                                            opacity: currentStyles.opacity
+                                            opacity: currentStyles.opacity,
+                                            zIndex: currentStyles.zIndex
                                         }}
                                     >
                                         {/* <Link
