@@ -42,6 +42,40 @@ app.post('/api/jobsearch', (req, res) => {
         Jobs.find({}, (err, docs) => {
             res.json(docs);
         });
+    } else if (req.body.query.job !== '' && req.body.query.location === '') {
+        Jobs.find(
+            {
+                // "$or": [{
+
+                // }]
+                title: { $regex: req.body.query.job }
+            },
+            (err, docs) => {
+                console.log(docs);
+                res.json(docs);
+            }
+        );
+    } else if (req.body.query.job === '' && req.body.query.location !== '') {
+        Jobs.find(
+            {
+                location: { $regex: req.body.query.location }
+            },
+            (err, docs) => {
+                res.json(docs);
+            }
+        );
+    } else {
+        Jobs.find(
+            {
+                $and: [
+                    { title: { $regex: req.body.query.job } },
+                    { location: { $regex: req.body.query.location } }
+                ]
+            },
+            (err, docs) => {
+                res.json(docs);
+            }
+        );
     }
 });
 

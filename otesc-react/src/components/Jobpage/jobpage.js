@@ -8,55 +8,58 @@ import { clearSearch } from '../../actions/index';
 import api from '../../api/index';
 
 class jobpage extends Component {
-	constructor(props) {
-		super(props);
-		this.state = {
-			query: {
-				job: props.search.job,
-				location: props.search.location
-			},
-			queryResult: []
-		};
-	}
+    constructor(props) {
+        super(props);
+        this.state = {
+            query: {
+                job: props.search.job,
+                location: props.search.location
+            },
+            queryResult: []
+        };
+    }
 
-	componentDidMount = () => {
-		window.scrollTo(0, 0);
-		api.search(this.state.query).then(queryResult => {
-			this.setState({
-				queryResult: queryResult
-			});
-		});
-	};
+    componentDidMount = () => {
+        window.scrollTo(0, 0);
+        api.search(this.state.query).then(queryResult => {
+            this.setState({
+                queryResult: queryResult
+            });
+        });
+    };
 
-	componentWillUnmount = () => {
-		this.setState({
-			queryResult: []
-		});
-		this.props.clearSearch().then(console.log('Search cleared'));
-	};
+    componentWillUnmount = () => {
+        this.setState({
+            queryResult: []
+        });
+        this.props.clearSearch().then(console.log('Search cleared'));
+    };
 
-	render() {
-		return (
-			<div>
-				<Navbar />
-				<Hero job={this.state.query.job} />
-				<JobQuery jobArr={this.state.queryResult} />
-				<Footer />
-			</div>
-		);
-	}
+    render() {
+        return (
+            <div>
+                <Navbar />
+                <Hero
+                    job={this.state.query.job}
+                    location={this.state.query.location}
+                />
+                <JobQuery jobArr={this.state.queryResult} />
+                <Footer />
+            </div>
+        );
+    }
 }
 
 function mapStateToProps(state) {
-	return {
-		search: {
-			job: state.search.query.job,
-			location: state.search.query.job
-		}
-	};
+    return {
+        search: {
+            job: state.search.query.job,
+            location: state.search.query.location
+        }
+    };
 }
 
 export default connect(
-	mapStateToProps,
-	{ clearSearch }
+    mapStateToProps,
+    { clearSearch }
 )(jobpage);
