@@ -16,14 +16,6 @@ import {
     Label,
     Alert
 } from 'reactstrap';
-import { uploadFile } from 'react-s3';
-
-const config = {
-    bucketName: 'otesc-s3bucket',
-    region: 'us-east-2',
-    accessKeyId: 'AKIAJ364LSOTF7PG6RSA',
-    secretAccessKey: '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'
-};
 
 export default class jobDetail extends Component {
     constructor(props) {
@@ -137,9 +129,7 @@ export default class jobDetail extends Component {
                 extension === 'doc' ||
                 extension === 'docx'
             ) {
-                uploadFile(this.state.applyForm.applyResume, config).then(
-                    data => console.log(data)
-                );
+                //upload to S3
             } else {
                 this.setState({
                     applySubmitted: true,
